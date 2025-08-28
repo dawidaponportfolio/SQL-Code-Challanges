@@ -1,0 +1,10 @@
+WITH CTE AS 
+  (
+  SELECT *, ROW_NUMBER() OVER(PARTITION BY email) AS rn
+FROM emails
+  )
+SELECT email, COUNT(*) OVER()
+FROM CTE 
+WHERE rn > 1
+ORDER BY email ASC
+;
