@@ -1,0 +1,3 @@
+SELECT address
+FROM homes
+WHERE year BETWEEN 2012 AND 2017;

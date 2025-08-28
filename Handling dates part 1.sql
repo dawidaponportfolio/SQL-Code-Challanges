@@ -1,0 +1,5 @@
+
+SELECT id AS game
+FROM games
+WHERE date NOT BETWEEN '2022-12-21' AND '2023-03-20'
+ORDER BY date DESC;
