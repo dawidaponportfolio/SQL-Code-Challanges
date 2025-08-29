@@ -1,22 +1,5 @@
-WITH RN AS
-(
-SELECT *, ROW_NUMBER() OVER() AS rn
-FROM boxes
-), FirstPass AS
-(
-SELECT *, LEAD(size) OVER(ORDER BY rn ASC) > size AS can_fit_next
-FROM RN
-), FilteredFirstPass AS
-(
-SELECT rn, box_id, size	
-FROM FirstPass
-WHERE can_fit_next = 1
-), SecondPass AS
-(
-SELECT *, LEAD(size) OVER(ORDER BY rn ASC) > size AS can_fit_next
-FROM FilteredFirstPass
-)
-SELECT box_id, can_fit_next
-FROM SecondPass
-ORDER BY box_id ASC
-;
+SELECT id, name
+FROM events
+-- Write your code below
+WHERE (name IS NULL) OR (year < 2000) OR (size < 1) OR (size > 100)
+ORDER BY id DESC;
