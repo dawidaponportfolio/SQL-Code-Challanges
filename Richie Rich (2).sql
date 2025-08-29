@@ -1,0 +1,11 @@
+WITH CTE AS 
+(
+SELECT *
+FROM companies
+WHERE DATEDIFF('2023-01-01', year) <= 1095 
+) 
+SELECT company
+FROM CTE
+GROUP BY company
+HAVING SUM(profit) > 20000000
+;

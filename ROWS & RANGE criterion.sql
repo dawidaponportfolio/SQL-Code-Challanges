@@ -1,0 +1,6 @@
+SELECT date, 
+AVG(num_newspapers) OVER(ORDER BY date ROWS BETWEEN 2 PRECEDING AND 1 FOLLOWING) AS avg_newspapers,
+(MAX(num_newspapers) OVER(ORDER BY date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)- MIN(num_newspapers)OVER(ORDER BY date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)) AS diff_newspapers
+FROM newspapers
+GROUP BY date
+;
