@@ -1,5 +1,7 @@
-SELECT DISTINCT * FROM animals_main
-UNION
-SELECT DISTINCT * FROM animals_secondary
+SELECT *
+FROM animals_secondary
+UNION 
+SELECT *
+FROM animals_main
 ORDER BY animal ASC
 ;
