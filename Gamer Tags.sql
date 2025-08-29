@@ -1,4 +1,5 @@
-SELECT first_name, last_name, CONCAT(LEFT(first_name, 3),YEAR(birth_date)) AS gamer_tag
+SELECT First_Name, 
+Last_Name, 
+CONCAT ((LEFT(First_Name, 3)), (LEFT(birth_date, 4))) AS gamertag
 FROM gamer_tags
-ORDER BY gamer_tag
-;
+ORDER BY gamertag ASC;
