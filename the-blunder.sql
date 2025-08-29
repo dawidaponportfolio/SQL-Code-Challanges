@@ -1,1 +1,3 @@
-SELECT CEILING(AVG(salary)-AVG(replace(salary, '0', ''))) FROM EMPLOYEES;
+SELECT ROUND(AVG(salary)) - ROUND(AVG(replace(salary, 0, '')))
+from employees
+;
