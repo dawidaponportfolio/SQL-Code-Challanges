@@ -1,10 +1,9 @@
-WITH CTE AS 
-  (
-  SELECT *, ROW_NUMBER() OVER(PARTITION BY email) AS rn
+WITH Duplicates_CTE AS
+(SELECT *, 
+ROW_NUMBER() OVER(PARTITION BY email) AS row_num
 FROM emails
-  )
-SELECT email, COUNT(*) OVER()
-FROM CTE 
-WHERE rn > 1
-ORDER BY email ASC
-;
+)
+SELECT email, row_num
+FROM Duplicates_CTE
+WHERE row_num > 1
+ORDER BY email ASC;
