@@ -1,0 +1,5 @@
+SELECT title, sales
+FROM Books
+WHERE date BETWEEN '2010-01-01' AND '2019-12-31'
+AND sales > 1000000
+;
