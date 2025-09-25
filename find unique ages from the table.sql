@@ -1,0 +1,4 @@
+SELECT DISTINCT age
+FROM Age
+ORDER BY age ASC
+;
