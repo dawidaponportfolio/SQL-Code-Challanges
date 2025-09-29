@@ -1,0 +1,6 @@
+SELECT *
+FROM Shows
+WHERE WEEKDAY(air_date) BETWEEN 0 AND 4 
+ORDER BY rating DESC
+LIMIT 1 
+;
