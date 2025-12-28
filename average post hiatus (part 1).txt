@@ -1,0 +1,11 @@
+WITH CTE AS
+(
+SELECT *, COUNT(user_id) AS ct, MAX(post_date) AS maxdate, MIN(post_date) AS mindate
+FROM posts
+WHERE YEAR(post_date) = 2021
+GROUP BY user_id
+)
+SELECT user_id, TIMESTAMPDIFF(DAY,mindate, maxdate) AS days_between
+FROM CTE
+WHERE ct >= 2
+;
