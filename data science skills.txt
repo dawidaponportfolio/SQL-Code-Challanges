@@ -1,0 +1,25 @@
+WITH Python AS
+(
+SELECT * 
+FROM candidates
+WHERE skill = "Python"
+),
+Tableau AS
+(
+SELECT * 
+FROM candidates
+WHERE skill = "Tableau"
+),
+PostgreSQL AS
+(
+SELECT * 
+FROM candidates
+WHERE skill = "PostgreSQL"
+)
+SELECT p.candidate_id
+FROM Python p
+JOIN Tableau t
+ON p.candidate_id = t.candidate_id
+JOIN PostgreSQL ps
+ON p.candidate_id = ps.candidate_id
+;
