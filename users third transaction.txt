@@ -1,0 +1,9 @@
+WITH CTE AS
+(
+SELECT *, ROW_NUMBER() OVER(PARTITION BY user_id) AS rn
+FROM transactions
+)
+SELECT user_id, spend, transaction_date
+FROM CTE
+WHERE rn = 3
+;
