@@ -1,0 +1,38 @@
+WITH Tweets AS
+(
+SELECT *, COUNT(tweet_id) AS tweet_count
+FROM tweets
+WHERE YEAR(tweet_date) = 2022
+GROUP BY user_id
+), Buckets AS
+(
+SELECT DISTINCT tweet_count AS tweet_bucket
+FROM Tweets
+)
+SELECT tweet_bucket,  COUNT(tweet_count) AS users_num
+FROM Tweets
+LEFT JOIN Buckets
+ON Tweets.tweet_count = Buckets.tweet_bucket
+GROUP BY tweet_bucket
+;
+
+
+-- or
+
+WITH Tweets AS
+(
+SELECT *, COUNT(tweet_id) AS tweet_count
+FROM tweets
+WHERE YEAR(tweet_date) = 2022
+GROUP BY user_id
+), Buckets AS
+(
+SELECT DISTINCT tweet_count AS tweet_bucket
+FROM Tweets
+)
+SELECT tweet_bucket,  COUNT(tweet_id) AS users_num
+FROM Tweets
+LEFT JOIN Buckets
+ON Tweets.tweet_count = Buckets.tweet_bucket
+GROUP BY tweet_bucket
+;
